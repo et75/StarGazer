@@ -28,7 +28,24 @@ async def on_message(message):
         response = requests.get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
         obj = json.loads(response.text)
         url = obj['hdurl']
+        expl = obj['explanation']
         file_name = url.split("/")[-1:][0]
+        print(file_name)
+        urllib.request.urlretrieve(url, file_name)
+        await message.channel.send(file=discord.File(file_name))
+        await message.channel.send(expl)
+        os.remove(file_name)
+
+  if message.content.startswith('~MARS'):
+        await message.channel.send('Heres the Picture of the Day!')
+        response = requests.get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+        obj = json.loads(response.text)
+        count = 0
+        for p in obj['latest_photos']:
+          count = count + 1
+          if count < 3:
+            url = p['img_src']
+            file_name = url.split("/")[-1:][0]
         print(file_name)
         urllib.request.urlretrieve(url, file_name)
         await message.channel.send(file=discord.File(file_name))
