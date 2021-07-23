@@ -81,7 +81,7 @@ async def MarsDate(ctx, date):
 
 
 @client.command()
-async def POTD(ctx):
+async def SpacePOTD(ctx):
   await ctx.channel.send('Heres the Picture of the Day!')
   url_to_file = composeURLSpace('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', 'hdurl')
   for urls in url_to_file:
