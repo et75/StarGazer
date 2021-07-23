@@ -71,7 +71,8 @@ async def MarsDate(ctx, date):
   if url_to_file == None:
       await ctx.channel.send("No Photos Available")
   else:
-    await ctx.channel.send('Here are some Mars Pictures from', date,'!')
+    msg = 'Here are some Mars Pictures from '+date+'!'
+    await ctx.channel.send(msg)
     for urls in url_to_file:
       file_name = url_to_file[urls]
       urllib.request.urlretrieve(urls, file_name)
@@ -103,7 +104,8 @@ async def SpaceDate(ctx, date):
   if url_to_file == None:
       await ctx.channel.send("No Photos Available")
   else:
-    await ctx.channel.send('Here are some Beautiful Pictures of Space from', date,'!')
+    msg = 'Here are some Beautiful Pictures of Space from '+date+'!'
+    await ctx.channel.send(msg)
     for urls in url_to_file:
       file_name = url_to_file[urls]
       urllib.request.urlretrieve(urls, file_name)
